@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profit Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f7f7f7;
+    }
+
+    .container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        width: 300px;
+        box-sizing: border-box;
+    }
+
+    label {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #profitResult {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+<script>
+function calculateProfit() {
+    var costOfProduct = parseFloat(document.getElementById("costOfProduct").value) || 0;
+    var sellingPrice = parseFloat(document.getElementById("sellingPrice").value) || 0;
+    var shippingCharge = parseFloat(document.getElementById("shippingCharge").value) || 0;
+    var packingCharge = parseFloat(document.getElementById("packingCharge").value) || 0;
+    var profit = sellingPrice - (costOfProduct + shippingCharge + packingCharge);
+    document.getElementById("profitResult").innerHTML = "Profit: ₹" + profit.toFixed(2);
+}
+</script>
+</head>
+<body>
+<div class="container">
+    <h2>Profit Calculator</h2>
+    <label for="costOfProduct">Cost of Product (₹):</label>
+    <input type="number" id="costOfProduct" required>
+    <label for="sellingPrice">Selling Price (₹):</label>
+    <input type="number" id="sellingPrice" required>
+    <label for="shippingCharge">Shipping Charge (₹):</label>
+    <input type="number" id="shippingCharge" required>
+    <label for="packingCharge">Packing Charge (₹):</label>
+    <input type="number" id="packingCharge" required>
+    <button onclick="calculateProfit()">Calculate Profit</button>
+    <div id="profitResult"></div>
+</div>
+</body>
+</html>
